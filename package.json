@@ -1,17 +1,17 @@
 {
-  "homepage": "https://Ivan-lyakh.github.io/movie-app-react-ts",
+  "homepage": "https://Ivan-lyakh.github.io/React-Movie-V1",
   "name": "movie-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "dev": "vite",
-  "build": "tsc -b && vite build",
-  "lint": "eslint .",
-  "preview": "vite preview",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-},
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
   "dependencies": {
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
