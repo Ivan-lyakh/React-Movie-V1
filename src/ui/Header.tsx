@@ -1,56 +1,78 @@
 
-import { type resultSearchType } from "../bll/useSearch"
+import { useDispatch, useSelector } from "react-redux";
+import { getSearch } from "../dal/api";
 
-type Props = {
-  getMovieResultSearch: (search: string) => void
-  getFalseStringForSearch: () => void
-  getStringInput: (value: string) => void
-  getNullResultSearch: () => void
-  getNullSelectedMovie: () => void
-  setSearchActive: React.Dispatch<React.SetStateAction<boolean>>
-  search: string
-  resultSearch: resultSearchType[] | null
-}
+import styles from "../css/Header.module.css"
 
-export function Header(props: Props) {
+
+
+import * as searchActions
+  from "../slicesStore/search";
+
+import * as selectedMovieAction
+  from "../slicesStore/selectedMovie";
+
+export function Header() {
+
+  const dispatch = useDispatch()
+
+  const search = useSelector((state: any) => state.search.search)
+
+  const resultSearch = useSelector((state: any) => state.search.resultSearch)
+
+  const getMovieResultSearch = async () => {
+    const data = await getSearch(search)
+    dispatch(searchActions.setResultSearch(data.results))
+  }
+
+  const handlerSearch = async () => {
+    if (
+      resultSearch.length === 0
+    ) {
+      dispatch(
+        searchActions
+          .searchActiveTrue()
+      )
+    }
+
+    await getMovieResultSearch()
+
+    dispatch(
+      searchActions
+        .resetSearch()
+    )
+
+  }
 
   return (
-    <div className="header">
-      <div className="container">
-        <div className="headerBody">
+    <div className={styles.header}>
+      <div className={styles.container}>
+        <div className={styles.headerBody}>
           <div
-            className="headerLogo"
+            className={styles.headerLogo}
             onClick={() => {
-              props.getNullSelectedMovie()
-              props.setSearchActive(false)
-              props.getNullResultSearch()
+              dispatch(selectedMovieAction.resetSelectedMovie())
+              dispatch(searchActions.searchActiveFalse())
+              dispatch(searchActions.resetResultSearch())
             }}>
             <h1 >Your GID-MOVIE</h1>
           </div>
 
-          <div className="inputHeader">
+          <div className={styles.inputHeader}>
             <input
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  props.resultSearch === null && props.setSearchActive(true)
-                  props.getFalseStringForSearch()
-                  props.getNullResultSearch()
-                  props.getMovieResultSearch(props.search)
+                  handlerSearch()
                 }
               }}
-              value={props.search}
-              onChange={(e) => props.getStringInput(e.target.value)}
+              value={search}
+              onChange={(e) => dispatch(searchActions.setSearch(e.target.value))}
               placeholder="Что ищем?"
               type="text" />
 
             <button
-              className="btnHeader"
-              onClick={() => {
-                { props.resultSearch === null && props.setSearchActive(true) }
-                props.getFalseStringForSearch()
-                props.getNullResultSearch()
-                props.getMovieResultSearch(props.search)
-              }}
+              className={styles.btnHeader}
+              onClick={() => handlerSearch()}
             >Найти</button>
           </div>
 

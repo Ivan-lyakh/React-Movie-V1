@@ -1,4 +1,4 @@
-import type { MovieDetails } from "./useSelectedMovie";
+import type { MovieDetails } from "../App";
 import { useState, useEffect } from "react";
 import { getMovieKey } from "../dal/api";
 

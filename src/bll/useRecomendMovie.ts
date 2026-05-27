@@ -1,4 +1,4 @@
-import type { MovieDetails } from "./useSelectedMovie";
+import type { MovieDetails } from "../App";
 import { useState, useEffect } from "react";
 import { getRecomendMovie } from "../dal/api";
 
@@ -6,7 +6,7 @@ type recomendMovie = {
   id: number
   title: string
   poster_path: string
-}
+} 
 
 export function useRecomenMovie(selectedMovie: MovieDetails) {
 

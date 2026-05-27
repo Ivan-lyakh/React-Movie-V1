@@ -1,6 +1,4 @@
-import { type MovieDetails } from "../bll/useSelectedMovie"
-import { type Dispatch, type SetStateAction } from "react"
-import { type selectedMovieId } from "../bll/useMovieId"
+
 import { DetailsBody } from "./DetailBody"
 import { DetailsVideoPlayer } from "./DetailsPlayer"
 import { DetailsActors } from "./DetailsActors"
@@ -9,59 +7,66 @@ import { useCredits } from "../bll/useCredits"
 import { useTraillerKey } from "../bll/useTrailerKey"
 import { useRecomenMovie } from "../bll/useRecomendMovie"
 
-type Props = {
-  getNullMovieId: () => void
-  getDetails: (id: number) => void
-  getNullSelectedMovie: () => void
-  selectedMovie: MovieDetails
-  selectedMovieId: selectedMovieId
-  setSearchActive: Dispatch<SetStateAction<boolean>>
-}
+import * as searchActions
+  from "../slicesStore/search";
 
-export function MovieDetail(props: Props) {
+import * as selectedMovieAction
+  from "../slicesStore/selectedMovie";
 
-  const { credits } = useCredits(props.selectedMovie)
+import styles from '../css/MovieDetails.module.css'
 
-  const { trailerMovieKey } = useTraillerKey(props.selectedMovie)
+import { useDispatch, useSelector } from "react-redux"
+import { Loading } from "./Loading"
 
-  const { recomendMovie } = useRecomenMovie(props.selectedMovie)
+export function MovieDetail() {
+
+  const dispatch = useDispatch()
+
+  const selectedMovie = useSelector((state: any) => state.selectedMovie.selectedMovie)
+
+  const loading = useSelector((state: any) => state.selectedMovie.loading)
+
+  const { credits } = useCredits(selectedMovie)
+
+  const { trailerMovieKey } = useTraillerKey(selectedMovie)
+
+  const { recomendMovie } = useRecomenMovie(selectedMovie)
+
+
 
   return (
-    <div className="movieDetails">
-      <div className="container">
 
-        <div className="movieDetailsHeader">
-          <button className="btnGoHome" onClick={() => {
-            props.getNullSelectedMovie()
-            props.getNullMovieId()
-            props.setSearchActive(false)
-          }}>На главную
-          </button>
+    <div className={styles.movieDetails}>
+      {loading ? <Loading />
+        : <div className={styles.container}>
+
+          <div className={styles.movieDetailsHeader}>
+            <button className={styles.btnGoHome} onClick={() => {
+              dispatch(selectedMovieAction.resetSelectedMovie())
+              dispatch(searchActions.searchActiveFalse())
+            }}>На главную
+            </button>
+          </div>
+
+          <DetailsBody
+            credits={credits} />
+
+          {trailerMovieKey &&
+            <DetailsVideoPlayer
+              traillerKey={trailerMovieKey.key}
+            />}
+
+          <DetailsRecomendation
+            recomendMovies={recomendMovie}
+          />
+
+          <DetailsActors
+            credits={credits}
+          />
         </div>
-
-        <DetailsBody
-          selectedMovie={props.selectedMovie}
-
-          selectedMovieId={props.selectedMovieId}
-          getNullMovieId={props.getNullMovieId}
-          credits={credits} />
-
-        {trailerMovieKey &&
-          <DetailsVideoPlayer
-            traillerKey={trailerMovieKey.key}
-          />}
-
-        <DetailsRecomendation
-          recomendMovies={recomendMovie}
-          getDetails={props.getDetails}
-          getNullMovieId={props.getNullMovieId}
-        />
-
-        <DetailsActors
-          credits={credits}
-        />
-      </div>
+      }
     </div>
   )
 }
+
 

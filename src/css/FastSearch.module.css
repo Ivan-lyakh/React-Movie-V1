@@ -1,0 +1,56 @@
+.fastSearch {
+  padding-bottom: 20px;
+}
+
+.fastSearchBody {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.btnForFastSearch {
+  padding: 10px 15px;
+  background-color: inherit;
+  color: #fff;
+  border-radius: 5px;
+  transition: 400ms;
+  font-weight: 600;
+}
+
+@media (max-width:900px) {
+  .fastSearchBody h1 {
+    font-size: 12px;
+  }
+
+  .btnForFastSearch {
+    font-size: 12px;
+    padding: 10px 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .btnForFastSearch {
+    font-size: 10px;
+    padding: 7px;
+  }
+
+  .fastSearchBody {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 550px) {
+  .fastSearchBody {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .fastSearchBodyButton {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .btnForFastSearch {
+    padding: 5px;
+  }
+}

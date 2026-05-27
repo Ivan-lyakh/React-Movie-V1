@@ -1,12 +1,12 @@
-import { type Movie } from "../bll/useMovie"
+import { type ActionMovie } from "../bll/useMovie"
 import { type Genres } from "../bll/useGenre"
 import { useState } from "react"
 import { useGenre } from "../bll/useGenre"
 
+import styles from "../css/Cattegory.module.css"
+
 type Props = {
-  getPopularMovies: () => void
-  getListGanre: (id: number) => void
-  movies: Movie[]
+  actionMovie: ActionMovie
   page: number
 }
 
@@ -18,15 +18,15 @@ export function Category(props: Props) {
 
   return (
 
-    <div className="filter">
+    <div className={styles.filter}>
 
-      <div className="filterHeader">
+      <div className={styles.filterHeader}>
         <h2>Категории:</h2>
         <button
-          className="filterBtnToggle"
+          className={styles.filterBtnToggle}
           onClick={() => {
             isOpenToggle()
-            props.getPopularMovies()
+            props.actionMovie.getPopularMovies()
             setActiveCategoryBg(0)
           }}
         >{isOpen === false ? "Показать" : "Скрыть"}</button>
@@ -34,7 +34,7 @@ export function Category(props: Props) {
 
       {isOpen &&
         <div>
-          <div className="filterBody">
+          <div className={styles.filterBody}>
             {ganres.map((ganre: Genres) => {
               if (ganre.name !== "телевизионный фильм") {
                 {
@@ -42,11 +42,11 @@ export function Category(props: Props) {
                     <div>
                       <div key={ganre.id}>
                         <button
-                          className="bntForFilter"
+                          className={styles.bntForFilter}
                           key={ganre.id}
                           onClick={() => {
                             setActiveCategoryBg(ganre.id)
-                            props.getListGanre(ganre.id)
+                            props.actionMovie.getListGanre(ganre.id)
                           }}
                           style={activeCategoryBg === ganre.id
                             ? { backgroundColor: "#fff", color: "grey" }
@@ -61,7 +61,6 @@ export function Category(props: Props) {
             )}
           </div>
         </div>}
-
     </div>
   )
 }

@@ -1,0 +1,77 @@
+.filter {
+  padding: 20px 0px;
+}
+
+.filterHeader {
+  display: flex;
+  align-items: center;
+}
+
+.filterBtnToggle {
+  margin-left: 15px;
+  color: #fff;
+  background-color: inherit;
+  font-weight: 600;
+  border: 1px solid #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: 300ms;
+}
+
+.filterBtnToggle:hover {
+  background-color: #fff;
+  color: grey;
+  transition: 300ms;
+}
+
+.bntForFilter {
+  width: 100%;
+  padding: 8px 0px;
+  margin-top: 5px;
+  background-color: inherit;
+  color: #fff;
+  border: 1px solid #fff;
+  transition: 300ms;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.bntForFilter:hover {
+  background-color: #fff;
+  color: grey;
+}
+
+.filterBody {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 20px 0px;
+  gap: 10px;
+}
+
+@media (max-width:1200px) {
+  .filterBody {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    padding: 20px 0px;
+    gap: 10px;
+  }
+
+  .bntForFilter {
+    font-size: 10px;
+    padding: 7px 10px;
+    width: 100%
+  }
+}
+
+
+
+@media (max-width:500px) {
+  .filterBody {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filterBtnToggle {
+    font-size: 12px;
+    font-weight: 400;
+  }
+}

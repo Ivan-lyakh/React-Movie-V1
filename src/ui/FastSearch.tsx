@@ -1,12 +1,10 @@
+import type { ActionMovie } from "../bll/useMovie"
+
+import styles from '../css/FastSearch.module.css'
 
 type Props = {
-
   pageGoStart: () => void
-  getNowPlayingMovies: () => void
-  getPopularMovies: () => void
-  getTopRatedMovies: () => void
-  getComingSoonMovies: () => void
-  getNullMovieList: () => void
+  actionMovie: ActionMovie
   activeFastSearch: number
   setActiveFastSearch: React.Dispatch<React.SetStateAction<number>>
 }
@@ -14,49 +12,49 @@ type Props = {
 export function FastSearch(props: Props) {
 
   return (
-    <div className="fastSearch">
-      <div className="fastSearchBody">
+    <div className={styles.fastSearch}>
+      <div className={styles.fastSearchBody}>
         <h1 >Быстрый фильтр: </h1>
-        <div className="fastSearchBodyButton">
+        <div className={styles.fastSearchBodyButton}>
 
           <button
-            className="btnForFastSearch"
+            className={styles.btnForFastSearch}
             onClick={() => {
               props.setActiveFastSearch(1)
-              props.getNullMovieList()
+              props.actionMovie.getNullMovieList()
               props.pageGoStart()
-              props.getPopularMovies()
+              props.actionMovie.getPopularMovies()
             }}
             style={props.activeFastSearch === 1 ? { backgroundColor: "#fff", border: "none", color: "grey" } : { backgroundColor: "inherit" }}
           >Популярные</button>
 
           <button
-            className="btnForFastSearch"
+            className={styles.btnForFastSearch}
             onClick={() => {
               props.setActiveFastSearch(2)
-              props.getNullMovieList()
+              props.actionMovie.getNullMovieList()
               props.pageGoStart()
-              props.getTopRatedMovies()
+              props.actionMovie.getTopRatedMovies()
             }}
             style={props.activeFastSearch === 2 ? { backgroundColor: "#fff", border: "none", color: "grey" } : { backgroundColor: "inherit" }}
           >Топ рейтинг</button>
 
-          <button className="btnForFastSearch"
+          <button className={styles.btnForFastSearch}
             onClick={() => {
               props.setActiveFastSearch(3)
-              props.getNullMovieList()
+              props.actionMovie.getNullMovieList()
               props.pageGoStart()
-              props.getNowPlayingMovies()
+              props.actionMovie.getNowPlayingMovies()
             }}
             style={props.activeFastSearch === 3 ? { backgroundColor: "#fff", border: "none", color: "grey" } : { backgroundColor: "inherit" }}
           >Сейчас в кино</button>
 
-          <button className="btnForFastSearch"
+          <button className={styles.btnForFastSearch}
             onClick={() => {
               props.setActiveFastSearch(4)
-              props.getNullMovieList()
+              props.actionMovie.getNullMovieList()
               props.pageGoStart()
-              props.getComingSoonMovies()
+              props.actionMovie.getComingSoonMovies()
             }}
             style={props.activeFastSearch === 4 ? { backgroundColor: "#fff", border: "none", color: "grey" } : { backgroundColor: "inherit" }}
           >Скоро выйдут</button>

@@ -5,6 +5,8 @@ import { Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
+import styles from '../css/DetailsBody.module.css'
+
 type Props = {
   credits: Credits[] | []
 }
@@ -15,7 +17,7 @@ export function DetailsActors(props: Props) {
     <div>
       <h2
         style={{ paddingTop: "20px" }}
-        className="detailsRecomendationTittle" >
+        className={styles.detailsRecomendationTittle} >
         Актеры:
       </h2>
 

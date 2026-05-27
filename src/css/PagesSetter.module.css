@@ -1,0 +1,32 @@
+.pagesSetterBody {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+
+
+.setPage {
+  background-color: inherit;
+  border: none;
+  transition: 300ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.setPage:hover {
+  cursor: pointer;
+  transition: 300ms;
+  transform: scale(1.1);
+}
+
+.buttonImg {
+  max-width: 30px;
+}
+
+.pagesSetterBody span {
+  margin-top: 10px;
+  padding: 0px 20px;
+}
