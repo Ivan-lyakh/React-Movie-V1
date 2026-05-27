@@ -1,51 +1,4 @@
-# 🎬 Movie App
 
-Movie App is a web application for browsing and exploring movies using the TMDB API.
-
-The project allows users to browse movie collections, search for movies, view detailed information, recommendations, actors, ratings, and other movie metadata in a responsive interface.
-
-## ✨ Features
-
-- Browse popular, top-rated, upcoming, and now-playing movies
-- Fast movie search
-- Detailed movie pages
-- Movie recommendations
-- Actors and cast information
-- Movie rating system
-- Pagination
-- Loading states
-- Error handling
-- Responsive design
-- Optimized rendering
-
-## 🛠 Tech Stack
-
-- React
-- TypeScript
-- Redux Toolkit
-- React Redux
-- Vite
-- Swiper
-- CSS Modules
-- TMDB API
-
-## 🧠 Architecture & Refactoring
-
-During refactoring, the project was improved with:
-
-- Redux Toolkit global state management
-- Better separation of concerns (UI / API / business logic)
-- Error handling system
-- CSS Modules for scoped styling
-- TypeScript type improvements
-- Render optimization
-- Cleaner component structure
-
-## 🚀 Live Demo
-
-https://ivan-lyakh.github.io/React-Movie-V1/
-
----
 
 # 🎬 Movie App
 
@@ -98,3 +51,54 @@ https://ivan-lyakh.github.io/React-Movie-V1/
   },
 ])
 ```
+
+
+
+# 🎬 Movie App
+
+Movie App is a web application for browsing and exploring movies using the TMDB API.
+
+The project allows users to browse movie collections, search for movies, view detailed information, recommendations, actors, ratings, and other movie metadata in a responsive interface.
+
+## ✨ Features
+
+- Browse popular, top-rated, upcoming, and now-playing movies
+- Fast movie search
+- Detailed movie pages
+- Movie recommendations
+- Actors and cast information
+- Movie rating system
+- Pagination
+- Loading states
+- Error handling
+- Responsive design
+- Optimized rendering
+
+## 🛠 Tech Stack
+
+- React
+- TypeScript
+- Redux Toolkit
+- React Redux
+- Vite
+- Swiper
+- CSS Modules
+- TMDB API
+
+## 🧠 Architecture & Refactoring
+
+During refactoring, the project was improved with:
+
+- Redux Toolkit global state management
+- Better separation of concerns (UI / API / business logic)
+- Error handling system
+- CSS Modules for scoped styling
+- TypeScript type improvements
+- Render optimization
+- Cleaner component structure
+
+## 🚀 Live Demo
+
+https://ivan-lyakh.github.io/React-Movie-V1/
+
+---
